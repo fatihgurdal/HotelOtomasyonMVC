@@ -1,0 +1,59 @@
+﻿@model WebApplication1.Models.RoomTypesModel
+
+@{
+    ViewBag.Title = "Oda Tipi Ekle";
+    IEnumerable<ProjectTemplate.Core.Entities.RoomFeatures> rf = ViewBag.RoomFeature;
+}
+
+<h2>Oda Tipi Ekle</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quota, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quota, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quota, "", new { @class = "text-danger" })
+                <br />
+                <ul class="list-unstyled">
+                    @foreach (var item in rf)
+                    {
+                        <li>
+                            <input id="rfList_@item.Id" name="RoomFeatureList[]" type="checkbox" value="@item.Id" /> 
+                            <label for="rfList_@item.Id">@item.Name</label>
+                        </li>
+                    }
+                </ul>
+                <a href="@Url.Action("RoomFeatureInsert","Rooms")">Yeni Özellik Ekle</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,65 @@
+﻿@model WebApplication1.Models.RoomSalesModel
+
+@{
+    ViewBag.Title = "RoomSalesDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rezervasyon Detayları</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Packet.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Packet.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogoutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogoutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "RoomSalesEdit", new { id = Model.Id })
+</p>

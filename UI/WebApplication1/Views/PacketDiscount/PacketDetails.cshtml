@@ -1,0 +1,49 @@
+﻿@model WebApplication1.Models.PacketsModel
+
+@{
+    ViewBag.Title = "PacketDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Paket Detayları</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "PacketEdit", new { id = Model.Id }) 
+</p>

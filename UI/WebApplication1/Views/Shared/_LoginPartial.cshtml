@@ -1,0 +1,8 @@
+﻿@if (Session["curUser"]!=null)
+{
+    ProjectTemplate.Core.Entities.Users curUser = (ProjectTemplate.Core.Entities.Users)Session["curUser"];
+    
+    <div>
+        Hoşgeldiniz <label>@curUser.UserName.</label>
+    </div>
+}

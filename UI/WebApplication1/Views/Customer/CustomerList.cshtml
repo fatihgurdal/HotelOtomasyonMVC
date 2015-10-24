@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApplication1.Models.CustomersModel>
+
+@{
+    ViewBag.Title = "Müşteri Listesi";
+}
+
+<h2>Müşteri Listesi</h2>
+
+<p>
+    <a href="@Url.Action("CustomerInsert")" class="btn btn-primary"> <i class="fa fa-user"> Yeni</i> </a>
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr id="Customer@(item.Id)">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+
+            <td>
+
+                <a href="@Url.Action("CustomerEdit", new { id = item.Id })" class="btn btn-warning"> <i class="fa fa-search-plus"> Düzenle</i> </a>
+                <a href="@Url.Action("CustomerDetail", new {id = item.Id})" class="btn btn-success"> <i class="fa fa-search-plus"> Detay</i> </a>
+
+                <a onclick="DeletePostToAction(@item.Id,'Müşteriyi Silmek İstediğine Emin Misin?','@Url.Action("CustomerDelete", "Customer")','CustomerError',null,false,'Customer')" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="5">
+            <div class="alert alert-danger" role="alert" style="visibility: hidden" id="CustomerError">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                HATA yada Alışveriş yapmış bir müşteri silinemez !
+            </div>
+        </td>
+    </tr>
+
+</table>

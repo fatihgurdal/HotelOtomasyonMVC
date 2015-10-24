@@ -1,0 +1,9 @@
+﻿@model WebApplication1.Models.ModelStudent
+@using (Html.BeginForm())
+{
+
+    @Html.TextBoxFor(model => model.Firstname)
+    @Html.TextBoxFor(model => model.Lastname)
+    <input type="submit" value="Kaydet/Güncelle" />
+
+}

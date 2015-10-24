@@ -1,0 +1,29 @@
+﻿@model List<WebApplication1.Models.StayingInRoomModel>
+
+@{
+    ViewBag.Title = "CustomersStayingInTheHotelTodayList";
+}
+
+<h2>Tarihe Göre Odada Kalanlar</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Müşteri</th>
+        <th></th>
+    </tr>
+
+@*@foreach (var item in Model) {
+    <tr>
+        <td>@item.Customer.Name</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
+            @Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */}) |
+            @Html.ActionLink("Delete", "Delete", new {/* id=item.PrimaryKey */})
+        </td>
+    </tr>
+}*@
+
+</table>

@@ -1,0 +1,110 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-APPLICATION", "0-APPLICATION", "{F306114E-DBE5-4C05-85AB-9B17F921C153}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-CORE", "1-CORE", "{BC0AE30C-B9F5-49B0-927F-15CD32A71563}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-REPOSITORY", "2-REPOSITORY", "{A9F0FE59-33E6-40D5-AC35-B6193DBE51F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-BUSINESS", "3-BUSINESS", "{DFFA36F4-7B4A-48FB-8E97-FB2EA2CF557A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-SERVICE", "4-SERVICE", "{6B12A0E8-0BD9-4070-B61B-962DCBA7351F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-UI", "5-UI", "{5914728B-6419-4BC9-BD9E-94A3E7F255D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Application", "ProjectTemplate.Application\ProjectTemplate.Application.csproj", "{BAB76ACF-D698-42D5-A6ED-7788FF8A6483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Core", "ProjectTemplate.Core\ProjectTemplate.Core.csproj", "{6F78C817-C117-487C-A96F-31FCA5EB6C8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Repository", "ProjectTemplate.Repository\ProjectTemplate.Repository.csproj", "{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Business", "ProjectTemplate.Business\ProjectTemplate.Business.csproj", "{E5861DA9-6F65-4B97-A5C6-95FBF826502A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Service", "ProjectTemplate.Service\ProjectTemplate.Service.csproj", "{440F60CF-CD66-474A-9363-BCE2ED66055E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-3-MVC", "5-3-MVC", "{D9E12368-6628-4571-B733-39BE8CFFAB73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "UI\WebApplication1\WebApplication1.csproj", "{66C25524-FBC8-4A02-85EE-F4470CFB6DB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0BBBC688-7E66-431D-9FCD-77CBE9448158}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAB76ACF-D698-42D5-A6ED-7788FF8A6483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB76ACF-D698-42D5-A6ED-7788FF8A6483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB76ACF-D698-42D5-A6ED-7788FF8A6483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB76ACF-D698-42D5-A6ED-7788FF8A6483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F78C817-C117-487C-A96F-31FCA5EB6C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F78C817-C117-487C-A96F-31FCA5EB6C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F78C817-C117-487C-A96F-31FCA5EB6C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F78C817-C117-487C-A96F-31FCA5EB6C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5861DA9-6F65-4B97-A5C6-95FBF826502A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5861DA9-6F65-4B97-A5C6-95FBF826502A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5861DA9-6F65-4B97-A5C6-95FBF826502A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5861DA9-6F65-4B97-A5C6-95FBF826502A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{440F60CF-CD66-474A-9363-BCE2ED66055E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{440F60CF-CD66-474A-9363-BCE2ED66055E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{440F60CF-CD66-474A-9363-BCE2ED66055E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{440F60CF-CD66-474A-9363-BCE2ED66055E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C25524-FBC8-4A02-85EE-F4470CFB6DB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C25524-FBC8-4A02-85EE-F4470CFB6DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C25524-FBC8-4A02-85EE-F4470CFB6DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C25524-FBC8-4A02-85EE-F4470CFB6DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAB76ACF-D698-42D5-A6ED-7788FF8A6483} = {F306114E-DBE5-4C05-85AB-9B17F921C153}
+		{6F78C817-C117-487C-A96F-31FCA5EB6C8E} = {BC0AE30C-B9F5-49B0-927F-15CD32A71563}
+		{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90} = {A9F0FE59-33E6-40D5-AC35-B6193DBE51F4}
+		{E5861DA9-6F65-4B97-A5C6-95FBF826502A} = {DFFA36F4-7B4A-48FB-8E97-FB2EA2CF557A}
+		{440F60CF-CD66-474A-9363-BCE2ED66055E} = {6B12A0E8-0BD9-4070-B61B-962DCBA7351F}
+		{D9E12368-6628-4571-B733-39BE8CFFAB73} = {5914728B-6419-4BC9-BD9E-94A3E7F255D0}
+		{66C25524-FBC8-4A02-85EE-F4470CFB6DB7} = {D9E12368-6628-4571-B733-39BE8CFFAB73}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://otelotomasyon.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ProjectTemplate.Application\\ProjectTemplate.Application.csproj
+		SccProjectTopLevelParentUniqueName1 = ProjectTemplate.sln
+		SccProjectName1 = ProjectTemplate.Application
+		SccLocalPath1 = ProjectTemplate.Application
+		SccProjectUniqueName2 = ProjectTemplate.Business\\ProjectTemplate.Business.csproj
+		SccProjectTopLevelParentUniqueName2 = ProjectTemplate.sln
+		SccProjectName2 = ProjectTemplate.Business
+		SccLocalPath2 = ProjectTemplate.Business
+		SccProjectUniqueName3 = ProjectTemplate.Core\\ProjectTemplate.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = ProjectTemplate.sln
+		SccProjectName3 = ProjectTemplate.Core
+		SccLocalPath3 = ProjectTemplate.Core
+		SccProjectUniqueName4 = ProjectTemplate.Repository\\ProjectTemplate.Repository.csproj
+		SccProjectTopLevelParentUniqueName4 = ProjectTemplate.sln
+		SccProjectName4 = ProjectTemplate.Repository
+		SccLocalPath4 = ProjectTemplate.Repository
+		SccProjectUniqueName5 = ProjectTemplate.Service\\ProjectTemplate.Service.csproj
+		SccProjectTopLevelParentUniqueName5 = ProjectTemplate.sln
+		SccProjectName5 = ProjectTemplate.Service
+		SccLocalPath5 = ProjectTemplate.Service
+		SccProjectUniqueName6 = UI\\WebApplication1\\WebApplication1.csproj
+		SccProjectTopLevelParentUniqueName6 = ProjectTemplate.sln
+		SccProjectName6 = UI/WebApplication1
+		SccLocalPath6 = UI\\WebApplication1
+	EndGlobalSection
+EndGlobal

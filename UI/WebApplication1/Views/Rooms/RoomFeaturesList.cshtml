@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApplication1.Models.RoomFeaturesModel>
+
+@{
+    ViewBag.Title = "Oda Özellik Listesi";
+}
+
+<h2>Oda Özellik Listesi</h2>
+
+<p>
+    @Html.ActionLink("Oda Özellik Ekle", "RoomFeatureInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "RoomFeaturesEdit", new { id = item.Id }) |
+            <form action="/Rooms/RoomFeaturesDelete/@(item.Id)">
+                <input type="submit" value="Sil" />
+            </form>
+        </td>
+    </tr>
+}
+
+</table>

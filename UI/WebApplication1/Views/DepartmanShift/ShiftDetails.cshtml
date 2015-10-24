@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.ShiftsModel
+
+@{
+    ViewBag.Title = "ShiftDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vardiya Detayları</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "ShiftEdit", new { id = Model.Id }) 
+</p>

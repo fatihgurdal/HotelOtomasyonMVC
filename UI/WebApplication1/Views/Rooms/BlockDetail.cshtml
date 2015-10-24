@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.BlocksModel
+
+@{
+    ViewBag.Title = "Blok Detaylar";
+    List<WebApplication1.Models.CheckedModel> floorsList = ViewBag.FloorList;
+}
+
+<h2>Blok Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlockName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlockName)
+        </dd>
+    </dl>
+    <br />
+    <ul class="list-unstyled">
+        @foreach (var item in floorsList)
+        {
+            <li>
+                <input @(item.IsChecked ? "checked" : "") id="floorList_@item.Id" type="checkbox" name="floorsList[]" value="@item.Id" />
+                <label for="floorList_@item.Id">@item.Name</label>
+            </li>
+        }
+    </ul>
+
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "BlockEdit", new {  id = Model.Id  }) 
+</p>

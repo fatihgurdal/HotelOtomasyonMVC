@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.GroupsOfEmployeeModel
+
+@{
+    ViewBag.Title = "GroupDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personel Grup Detayları</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Departman Adı")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "GroupEdit", new { id = Model.Id }) 
+</p>

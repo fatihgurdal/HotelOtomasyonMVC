@@ -1,0 +1,56 @@
+﻿@model WebApplication1.Models.NationalitiesModel
+
+@{
+    ViewBag.Title = "Uyrun Düzenle";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-push-2">
+
+
+            <h2>Uyruk Düzenle</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CountryName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CountryName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CountryName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-refresh"> </i>
+                                Güncelle
+                            </button>
+                            <a onclick="DeletePostToAction(@Model.Id,'Uyruğu Silmek İstediğine Emin Misin?','@Url.Action("NationalityDelete", "Customer")','NationalityError','@Url.Action("NationalityList", "Customer")',true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" style="visibility: hidden" id="NationalityError">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        HATA yada böyle bir uyruğa sahip müşteri bulunmaktadır !
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

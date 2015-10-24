@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - DeadLock Otel Otomasyon</title>
+    @System.Web.Optimization.Styles.Render("~/styles")
+    @System.Web.Optimization.Scripts.Render("~/topscripts")
+    <script>
+        $("button").attr("disabled", false);
+    </script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Menüler</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">DeadLock Admin v2.0</a>
+        </div>
+
+        @Html.Partial("_NavBarRight")
+    </nav>
+    <div>
+        @Html.Partial("_LoginPartial")
+    </div>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid" style="padding-left:0px">
+            <div class="row">
+                <div class="col-lg-3">
+                    @Html.Partial("_SideBar")
+                </div>
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+</div>
+<!-- /#page-wrapper -->
+@Html.Partial("_Signature")
+
+<script>
+    $(document).ready(function () {
+        $("#SideMenus").load('@(Url.Action("GetUserAuthoritieses", "UserAuthorities"))?userId=' + 1);
+    });
+</script>
+
+
+
+</body>
+</html>
+

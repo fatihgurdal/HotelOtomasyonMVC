@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebApplication1.Models.PacketsModel>
+
+@{
+    ViewBag.Title = "PacketList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Paket Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "PacketInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="Packet@(item.Id)">
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePercentage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "PacketEdit", new { id=item.Id }) |
+            @Html.ActionLink("Detaylar", "PacketDetails", new { id=item.Id }) |
+            <a onclick="DeletePostToAction(@item.Id,'Paketi Silmek İstediğine Emin Misin?','PacketDelete','Packet','PacketList',true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+        </td>
+    </tr>
+}
+
+</table>
+

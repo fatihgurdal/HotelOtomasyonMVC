@@ -1,0 +1,43 @@
+﻿@model WebApplication1.Models.BlocksModel
+
+@{
+    ViewBag.Title = "Blok Ekle";
+    IEnumerable<ProjectTemplate.Core.Entities.Floors> floorsList = ViewBag.FloorList;
+}
+
+<h2>Blok EKle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.BlockName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BlockName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BlockName, "", new { @class = "text-danger" })
+                <br />
+                <ul class="list-unstyled">
+                    @foreach (var item in floorsList)
+                    {
+                        <li>
+                            <input id="floorList_@item.Id" type="checkbox" name="floorsList[]" value="@item.Id" />
+                            <label for="floorList_@item.Id">@item.Name</label>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

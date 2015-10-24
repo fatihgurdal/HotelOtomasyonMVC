@@ -1,0 +1,77 @@
+﻿@model WebApplication1.Models.SalesModel
+
+@{
+    ViewBag.Title = "Satış Detayları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Satış Detayları</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Müşteri Adı")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("Kayıt Yapan Personel")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ödeme Şekli")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentMethod.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsSale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsSale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReserveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReserveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsCollect)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsCollect)
+        </dd>
+
+  
+
+    </dl>
+</div>
+<p>
+
+    <a href="@Url.Action("SalesEdit", new { id = Model.Id })" class="btn btn-warning"> <i class="fa fa-edit"> Düzenle</i> </a>
+    <a onclick="DeletePostToAction(@Model.Id,'Satışı Silmek İstediğine Emin Misin?','@Url.Action("SalesDelete", "Sale")',null,@Url.Action("SalesList", "Sale"),true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+</p>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication1.Models.ShiftsModel>
+
+@{
+    ViewBag.Title = "ShiftList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vardiya Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "ShiftInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr id="Shift@(item.Id)">
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "ShiftEdit", new { id = item.Id }) |
+            @Html.ActionLink("Detaylar", "ShiftDetails", new { id = item.Id }) |
+            <a onclick="DeletePostToAction(@item.Id,'Vardiyayı Silmek İstediğine Emin Misin?','ShiftDelete','Shift','ShiftList',true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+        </td>
+    </tr>
+}
+
+</table>

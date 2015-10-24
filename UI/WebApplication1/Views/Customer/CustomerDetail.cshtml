@@ -1,0 +1,136 @@
+﻿@model WebApplication1.Models.CustomersModel
+
+@{
+    ViewBag.Title = "CustomerDetail";
+}
+
+<h2>Detay</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BloodGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BloodGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nationality.CountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdentificationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdentificationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMarried)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMarried)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("CustomerEdit", new { id = Model.Id })" class="btn btn-warning"> <i class="fa fa-search-plus"> Düzenle</i> </a>
+    <a onclick="ActiontoPostId(@Model.Id,'Müşteriyi Silmek İstediğine Emin Misin?')" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+</p>
+<script>
+    function ActiontoPostId(id, ConfirmStr) {
+        if (confirm(ConfirmStr)) {
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("CustomerDelete", "Customer")",
+                data: { "id": id },
+                dataType: "json",
+                success: function (data) {
+                    if (data) {
+                        //$("#Customer" + id).remove();
+                        window.location.replace("@Url.Action("CustomerList","Customer")");
+
+                    } else {
+                        alert("Müşteri Silinemedi");
+                    }
+
+                }
+            });
+        }
+    }
+</script>

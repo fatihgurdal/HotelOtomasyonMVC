@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplication1.Models.SaleExtrasModel>
+
+@{
+    ViewBag.Title = "SaleExtrasList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ekstra Harcamalar Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "SaleExtrasInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraProduct.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomSale.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductAmount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraProduct.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomSale.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductAmount)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "SaleExtrasEdit", new { id = item.Id }) |
+            @Html.ActionLink("Detaylar", "SaleExtrasDetails", new { id = item.Id }) |
+            @Html.ActionLink("Sil", "SaleExtrasDelete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

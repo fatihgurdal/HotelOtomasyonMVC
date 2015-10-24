@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebApplication1.Models.FloorsModel>
+
+@{
+    ViewBag.Title = "Kat Listesi";
+}
+
+<h2>Kat Listesi</h2>
+
+<p>
+    @Html.ActionLink("Kat Ekle", "FloorInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "FloorEdit", new { id=item.Id }) |
+            <form action="/Rooms/FloorDelete/@(item.Id)">
+                <input class="btn btn-link" type="submit" value="Sil" />
+            </form>
+        </td>
+    </tr>
+}
+
+</table>

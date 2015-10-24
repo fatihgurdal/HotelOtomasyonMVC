@@ -1,0 +1,47 @@
+﻿@model WebApplication1.Models.PermitsModel
+
+@{
+    ViewBag.Title = "İzin Detaylar";
+}
+
+<h2>İzin Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PermitType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermitType.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+       
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "PermitEdit", new { id = Model.Id })
+</p>

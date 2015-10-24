@@ -1,0 +1,194 @@
+﻿
+@model WebApplication1.Models.RoomSalesModel
+
+@{
+    ViewBag.Title = "RoomSalesInsert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>
+    Rezervasyon Sayfası
+    <img src="~/images/loading.gif" height="32" width="32" id="PageLogingGif" style="visibility: hidden" />
+</h2>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal col-md-10">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesId,"Satış Numarası ", htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-2">
+                <input name="SalesId" id="SalesId" class="form-control" readonly="readonly" value="@ViewBag.SaleId">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoginDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.LoginDate, new { htmlAttributes = new { @class = "form-control", min=DateTime.Now.ToString("yyyy-MM-dd")} })
+                @Html.ValidationMessageFor(model => model.LoginDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LogoutDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.LogoutDate, new { htmlAttributes = new { @class = "form-control", min = DateTime.Now.ToString("yyyy-MM-dd") } })
+                @Html.ValidationMessageFor(model => model.LogoutDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model=>model.Room.RoomType, "Oda Tipi", htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-5">
+                @Html.DropDownList("RoomType", Enumerable.Empty<SelectListItem>(), htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomId, "Odalar", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("RoomId", Enumerable.Empty<SelectListItem>(), htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                @Html.ValidationMessageFor(model => model.RoomId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiscountsId, "İndirimler", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("DiscountsId", (IEnumerable<SelectListItem>)ViewBag.Indirimler, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DiscountsId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Satış", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <span class="form-control">@ViewBag.Satislar</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PacketId, "Paketler", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("PacketId", (IEnumerable<SelectListItem>)ViewBag.Paketler, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PacketId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <h4 class="field-validation-valid text-success"  data-valmsg-replace="true">
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        <span class="input-group-addon"><span class="fa fa-turkish-lira"> </span></span>
+                    </div>
+                </h4>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Rezerve Yap ve Kişi Eklemeye Git" class="btn btn-primary" disabled="disabled"/>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    $("#LoginDate, #LogoutDate").change(function () {
+        
+        $("#PageLogingGif").css("visibility", "visible");
+        var startDateTime = $("#LoginDate").val();
+        var endDateTime = $("#LogoutDate").val();
+        if (startDateTime >= endDateTime) {
+            if (endDateTime != "") {
+                $("#LogoutDate").val("");
+                alert("Çıkış tarihi giriş tarihinden önce olamaz");
+                //$('input[type="submit"]').attr("disabled", true);
+            } else if (startDateTime != "") {
+                //$('input[type="submit"]').attr("disabled", true);
+            } 
+        } else {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("DateToRoomType","Sale")',
+                data: { "startDateTime": startDateTime, "endDateTime": endDateTime },
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data);
+                    $("#RoomType").html("");
+                    for (i = 0; i < data.length; i++) {
+                        $("#RoomType").append(
+                        $("<option></option>").val(data[i].Id).html(data[i].Name));
+                    }
+                    $("#RoomType").removeAttr("disabled");
+                    $("#RoomType").trigger("change");
+                }
+                
+            });
+            
+        }
+        $("#PageLogingGif").css("visibility", "hidden");
+    });
+
+    $("#RoomType").change(function () {
+       
+        var id = $("#RoomType").val();
+        var startDateTime = $("#LoginDate").val();
+        var endDateTime = $("#LogoutDate").val();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("RoomTypeToRooms","Sale")',
+            data: { "id": id, "startDateTime": startDateTime, "endDateTime": endDateTime },
+            dataType: "json",
+            success: function (data) {
+                $("#RoomId").html("");
+                for (i = 0; i < data.length; i++) {
+                    $("#RoomId").append(
+                    $("<option></option>").val(data[i].Id).html(data[i].Number));
+                }
+                $("#RoomId").removeAttr("disabled");
+            }
+
+        });
+    });
+
+    $("#LoginDate, #LogoutDate, #RoomType, #DiscountsId, #PacketId").change(function () {
+        if (($("#LoginDate").val() != "") && ($("#LogoutDate").val() != "")) {
+            //alert("Fiyat hesaplanmaya çalışılıyor");
+            var sDate = $("#LoginDate").val();
+            var eDate = $("#LogoutDate").val();
+            var roomTypeId = $("#RoomType").val();
+            var diccountsId = $("#DiscountsId").val();
+            var packetId = $("#PacketId").val();
+            //console.log(dayCount);
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetRoomSalesAmount", "Sale")',
+                data: { "sDate": sDate, "eDate": eDate, "roomTypeId": roomTypeId, "diccountsId": diccountsId, "packetId": packetId },
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    $("#Amount").val(data);
+                    if (data > 0) {
+                        $('input[type="submit"]').removeAttr('disabled');
+                    } else {
+                        $('input[type="submit"]').attr("disabled", true);
+                    }
+                }
+
+            });
+
+        } else {
+            $("#Amount").val("Tarih Aralığı Seçin");
+            $('input[type="submit"]').attr("disabled", true);
+        }
+    });
+
+</script>

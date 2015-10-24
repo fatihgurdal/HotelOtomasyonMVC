@@ -1,0 +1,55 @@
+﻿@using System.Web.Hosting
+@using ProjectTemplate.Core.Entities
+@helper SideBarHelper(IEnumerable<UserAuthorities> listUserAuthoritieses)
+{
+    
+    @:<ul class="nav" id="side-menu">
+  
+    foreach (var item in listUserAuthoritieses)
+    {
+        <li>
+            
+            @{
+                var subCategories = item.Authority.SubAuthoritys;
+                if (subCategories != null && subCategories.Count > 0)
+                {
+                    <a href="#"><i class="fa @item.Authority.FaIconCode fa-fw"></i> @item.Authority.Name <span class="fa arrow"> </span></a>
+                    
+                    @SideBarSubCategories(subCategories);
+                }
+                else
+                {
+                    <a href="#"><i class="fa fa-dashboard fa-fw"></i> @item.Authority.Name</a>
+                }
+}
+        </li>
+    }
+    @:</ul>
+}
+@helper SideBarSubCategories(IEnumerable<Authorities> listAuthoritieses)
+{
+
+    @:<ul class="nav nav-second-level">
+        foreach (var item in listAuthoritieses)
+        {
+            
+        <li>
+            
+            @{
+                var subCategories = item.SubAuthoritys;
+                
+                if (subCategories != null && subCategories.Count > 0)
+                {
+                    <a href="#"><i class="fa fa-dashboard fa-fw" style="visibility: hidden"></i><i class="fa @item.FaIconCode fa-fw"></i> @item.Name <span class="fa arrow"> </span></a>
+                    @SideBarSubCategories(subCategories)            
+                }
+                else
+                {
+                    
+                    <a href="~/@item.ControllerName/@item.ActionName"><i class="fa fa-dashboard fa-fw" style="visibility: hidden"></i><i class="fa @item.FaIconCode fa-fw"></i> @item.Name</a>
+                }
+}
+        </li>
+        }
+    @:</ul>
+}

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<WebApplication1.Models.SalesModel>
+
+@{
+    ViewBag.Title = "Satış Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Satış Listesi</h2>
+
+
+<p>
+    <a href="@Url.Action("OpenSale")" class="btn btn-primary"> <i class="fa fa-flag"> Yeni</i> </a>
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayName("Ödeme Tipi")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.Customer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReserveDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+      
+        
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr id="sales@(item.Id)">
+
+        <td>
+
+            @{
+                string s = "! BELİRTİLMEDİ !";
+                if (item.PaymentMethod == null)
+                {
+                    @s
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.PaymentMethod.Name)
+                }
+            }
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSale)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.ReserveDate.Day)/@Html.DisplayFor(model => item.ReserveDate.Month)/@Html.DisplayFor(model => item.ReserveDate.Year)
+        </td>
+        <td>
+            @{
+                if (item.Amount==null)
+                {
+                    item.Amount = 0;
+                }
+            }
+                    @Html.DisplayFor(modelItem => item.Amount)
+            <span class="fa fa-turkish-lira"> </span>
+        </td>
+
+
+        <td>
+            <a class="btn btn-primary" href="@Url.Action("RoomSalesList","Sale",new {id=item.Id})"><i class="fa fa-suitcase"> </i> Rezerveleri</a>
+            <a href="@Url.Action("SalesEdit", new {id = item.Id})" class="btn btn-warning"> <i class="fa fa-edit"> </i> Düzenle</a>
+            <a href="@Url.Action("SalesDetails", new {id = item.Id})" class="btn btn-success"> <i class="fa fa-search-plus"> </i> Detay</a>
+            <a onclick="DeletePostToAction(@item.Id, 'Satışı Silmek İstediğine Emin Misin?', '@Url.Action("SalesDelete", "Sale")', 'SalesError', null, false, 'sales') " class="btn btn-danger"><i class="fa fa-remove"> </i> Sil</a>
+
+        </td>
+    </tr>
+}
+
+    <tr>
+        <td colspan="6">
+            <div class="alert alert-danger" role="alert" style="visibility: hidden" id="SalesError">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                HATA ... Satış silinemiyor !
+            </div>
+            <a class="@ViewBag.CollectClass" href="@if (!(bool) ViewBag.Collect)
+               {
+                   @Url.Action("SalesList", "Sale")
+               }
+               else
+               {
+                   @Url.Action("SalesList", "Sale", new { status = "Collect" })
+               }">
+                <i class="glyphicon glyphicon-transfer"> </i>
+                @ViewBag.CollectNote
+            </a>  
+        </td>
+    </tr>
+
+</table>

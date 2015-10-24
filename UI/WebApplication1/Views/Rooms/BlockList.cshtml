@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApplication1.Models.BlocksModel>
+
+@{
+    ViewBag.Title = "Blok Listesi";
+}
+
+<h2>Blok Listesi</h2>
+
+<p>
+    @Html.ActionLink("Blok Ekle", "BlockInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlockName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlockName)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "BlockEdit", new { id=item.Id }) |
+            @Html.ActionLink("Detaylar", "BlockDetail", new { id = item.Id }) |
+            <form action="/Rooms/BlockDelete/@(item.Id)">
+                <input class="btn btn-link" type="submit" value="Sil" />
+            </form>
+        </td>
+    </tr>
+}
+
+</table>

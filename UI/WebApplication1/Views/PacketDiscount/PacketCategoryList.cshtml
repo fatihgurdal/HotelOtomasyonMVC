@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebApplication1.Models.PacketsExtraProductCategoriesModel>
+
+@{
+    ViewBag.Title = "PacketCategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pakete Dahil Ürün Kategorileri</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "PacketCategoryInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Kategori Adı")
+        </th>
+        <th>
+            @Html.DisplayName("Paket Adı")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr id="PacketCategory@(item.Id)">
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraProductCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Packet.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "PacketCategoryEdit", new { id = item.Id }) |
+            @Html.ActionLink("Detaylar", "PacketCategoryDetails", new { id = item.Id }) |
+            <a onclick="DeletePostToAction(@item.Id,'Pakete Dahil Kategoriyi Silmek İstediğine Emin Misin?','PacketCategoryDelete','PacketCategory','PacketCategoryList',true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+        </td>
+    </tr>
+}
+
+</table>
+

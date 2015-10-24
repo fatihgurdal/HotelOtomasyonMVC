@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebApplication1.Models.ExtraProductCategoriesModel>
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "CategoryInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr id="Category@(item.Id)">
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "CategoryEdit", new { id = item.Id }) |
+            @Html.ActionLink("Detaylar", "CategoryDetails", new { id = item.Id }) |
+            <a onclick="DeletePostToAction(@item.Id,'Otel Özelliğini Silmek İstediğine Emin Misin?','CategoryDelete','Category','CategoryList',true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+        </td>
+    </tr>
+}
+
+</table>

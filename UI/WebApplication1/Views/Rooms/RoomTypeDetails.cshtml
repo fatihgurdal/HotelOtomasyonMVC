@@ -1,0 +1,45 @@
+﻿@model WebApplication1.Models.RoomTypesModel
+
+@{
+    ViewBag.Title = "Oda Tipi Detaylar";
+    IEnumerable<WebApplication1.Models.CheckedModel> chckList = ViewBag.FeatureList;
+}
+
+<h2>Oda Tipi Detaylar</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quota)
+        </dd>
+        <div>
+            @foreach (var item in chckList)
+            {
+                <input id="statuschk_@item.Id" type="checkbox" disabled readonly @(item.IsChecked ? "checked" : "") />
+                <label for="statuschk_@item.Id">@item.Name</label>
+            }
+        </div>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Oda Listesine Dön", "RoomList")
+</p>

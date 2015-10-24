@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40DD7CF9-7F09-4359-99ED-17FBAE2DBF90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectTemplate.Repository</RootNamespace>
+    <AssemblyName>ProjectTemplate.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryAuthoritys.cs" />
+    <Compile Include="RepositoryBase.cs" />
+    <Compile Include="RepositoryBlockFloors.cs" />
+    <Compile Include="RepositoryBlocks.cs" />
+    <Compile Include="RepositoryCustomers.cs" />
+    <Compile Include="RepositoryDepartments.cs" />
+    <Compile Include="RepositoryDiscounts.cs" />
+    <Compile Include="RepositoryEmployees.cs" />
+    <Compile Include="RepositoryEmployeeShifts.cs" />
+    <Compile Include="RepositoryExtraProductCategories.cs" />
+    <Compile Include="RepositoryExtraProducts.cs" />
+    <Compile Include="RepositoryFloors.cs" />
+    <Compile Include="RepositoryGroupsOfEmployee.cs" />
+    <Compile Include="RepositoryHotelFeatures.cs" />
+    <Compile Include="RepositoryNationalities.cs" />
+    <Compile Include="RepositoryPackets.cs" />
+    <Compile Include="RepositoryPacketsExtraProductCategories.cs" />
+    <Compile Include="RepositoryPaymentMethods.cs" />
+    <Compile Include="RepositoryPermits.cs" />
+    <Compile Include="RepositoryPermitTypes.cs" />
+    <Compile Include="RepositoryReserveCancelLog.cs" />
+    <Compile Include="RepositoryRoomFeatures.cs" />
+    <Compile Include="RepositoryRoomFeaturesRoomTypes.cs" />
+    <Compile Include="RepositoryRooms.cs" />
+    <Compile Include="RepositoryRoomSales.cs" />
+    <Compile Include="RepositoryRoomStatuses.cs" />
+    <Compile Include="RepositoryRoomTypes.cs" />
+    <Compile Include="RepositorySaleExtras.cs" />
+    <Compile Include="RepositorySales.cs" />
+    <Compile Include="RepositoryShifts.cs" />
+    <Compile Include="RepositoryStatuses.cs" />
+    <Compile Include="RepositoryStayingInRoom.cs" />
+    <Compile Include="RepositoryUserAuthoritys.cs" />
+    <Compile Include="RepositoryUsers.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectTemplate.Core\ProjectTemplate.Core.csproj">
+      <Project>{6F78C817-C117-487C-A96F-31FCA5EB6C8E}</Project>
+      <Name>ProjectTemplate.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

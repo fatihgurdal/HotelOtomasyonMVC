@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication1.Models.GroupsOfEmployeeModel>
+
+@{
+    ViewBag.Title = "GroupList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Personel Grupları</h2>
+
+<p>
+    @Html.ActionLink("Yeni", "GroupInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Departman Adı")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr id="Group@(item.Id)">
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "GroupEdit", new { id = item.Id }) |
+            @Html.ActionLink("Detaylar", "GroupDetails", new { id = item.Id }) |
+            <a onclick="DeletePostToAction(@item.Id,'Personel Grubunu Silmek İstediğine Emin Misin?','GroupDelete','Group','GroupList',true,null)" class="btn btn-danger"><i class="fa fa-remove"> </i>Sil</a>
+        </td>
+    </tr>
+}
+
+</table>
